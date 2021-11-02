@@ -1,4 +1,3 @@
-const express = require('express');
 const Test = require('../models/Test');
 
 const getAll = async (req, res) => {
