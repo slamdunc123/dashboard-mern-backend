@@ -1,12 +1,24 @@
 const express = require('express');
 const router = express.Router();
 const testController = require('../controllers/testController')
+const Test = require('../models/Test');
+
 
 // @router  GET api/tests - http://localhost:5000/api/tests
 // @desc    Get all tests
 // @access  Public
+router.get('/', async (req, res) => {
+	try {
+		const tests = await Test.find();
+		res.json(tests);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Server error');
+	}
+});
 
-router.get('/', testController.getAll)
+
+// router.get('/', testController.getAll)
 
 // @router  GET api/tests/:id - http://localhost:5000/api/tests/:id
 // @desc    Get test by id
