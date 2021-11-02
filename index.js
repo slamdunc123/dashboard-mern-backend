@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 });
 
 // define api routes
-app.use('/api/tests', require('./api/tests')); //localhost:5000/api/tests
+app.use('/api/tests', require('./routes/testRoutes')); //localhost:5000/api/tests
 
 let port = process.env.PORT || 5000;
 
