@@ -83,7 +83,8 @@ const updateById = async (req, res) => {
 				msg: 'Test not found',
 			});
 		}
-		test = await Test.findByIdAndUpdate(req.params.id, req.body);
+        //In Mongoose 4.0, the default value for the new option of findByIdAndUpdate (and findOneAndUpdate) has changed to false, which means returning the old doc (see #2262 of the release notes). So you need to explicitly set the option to true to get the new version of the doc, after the update is applied:
+		test = await Test.findByIdAndUpdate(req.params.id, req.body, {new: true});
 		await res.json({
 			msg: 'Test updated successfully.',
 			test: test,
